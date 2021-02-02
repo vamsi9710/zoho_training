@@ -1,5 +1,7 @@
 #include <stdio.h>
+
 #include<stdlib.h>
+
 struct node
 {
     struct node *prev;
@@ -8,18 +10,28 @@ struct node
 };
 struct node *head;
 void insert_front();
+
 void insert_last();
+
 void delete_front();
+
 void delete_last();
+
+void insert_nthpos();
+
+void delete_nthpos();
+
 void display();
+
 void search();
+
 void main()
 {
     int ch=0;
-    while(ch!=7)
+    while(ch!=9)
     {
         printf("choose your option");
-        printf("\n1.Insert in begining\n2.Insert at last\n 3.Delete from front\n 4.Delete from last\n 5.Search\n6.Show\n7.Exit\n");
+        printf("\n1.Insert in begining\n2.Insert at last\n 3.Delete from front\n 4.Delete from last\n 5.insert at n th position\n6.delete at n th position\n 7.search\n 8.display \n 9.Exit\n");
         printf("\nEnter your choice?\n");  
         scanf("\n%d",&ch);  
         switch(ch)  
@@ -36,13 +48,19 @@ void main()
             case 4:  
             delete_last();  
             break;  
-            case 5:  
+            case 5:
+            insert_nthpos();
+            break;
+            case 6:
+            delete_nthpos();
+            break;
+            case 7:  
             search();  
             break;  
-            case 6:  
+            case 8:  
             display();  
             break;  
-            case 7:  
+            case 9:  
             exit(0);  
             break;  
             default:  
@@ -52,6 +70,7 @@ void main()
 }
                  
                  void insert_front()
+
                  {
                      struct node *ptr;
                      int item;
@@ -87,6 +106,7 @@ void main()
                  
                  
                  void insert_last()
+
                  {
                      struct node *ptr, *temp;
                      int item;
@@ -217,6 +237,68 @@ void main()
                          {
                              printf("\n item not found\n");
                          }
+                     }
+                 }
+                 void insert_nthpos()
+
+                 {
+                     struct node *ptr,*temp;
+                     int item, loc,i;
+                     ptr=(struct node *)malloc(sizeof(struct node));
+                     if(ptr==NULL)
+                     {
+                         printf("\n overflow");
+                     }
+                     else
+                     {
+                         temp=head;
+                         printf("enter the loction to add");
+                         scanf("%d",&loc);
+                         for(i=0;i<loc;i++)
+                         {
+                             temp=temp->next;
+                             if(temp==NULL)
+                             {
+                                 printf("\n there are less than %d elements",loc);
+                                 return;
+                             }
+                         }
+                         printf("enter value");
+                         scanf("%d",&item);
+                         ptr->data=item;
+                         ptr->next=temp->next;
+                         ptr -> prev = temp;  
+                         temp->next = ptr;  
+                         temp->next->prev=ptr;  
+                         printf("\nnode inserted\n");
+                     }
+                 }
+
+
+                 void delete_nthpos()
+                 {
+                     struct node *ptr, *temp;  
+                     int val;  
+                     printf("\n Enter the data after which the node is to be deleted ");  
+                     scanf("%d", &val);  
+                     ptr = head;  
+                     while(ptr -> data != val)  
+                     ptr = ptr -> next;  
+                     if(ptr -> next == NULL) 
+                     {
+                        printf("\n can't delete\n");
+                     }
+                     else if(ptr->next->next==NULL)
+                     {
+                         ptr->next=NULL;
+                     }
+                     else
+                     {
+                         temp=ptr->next;
+                         ptr->next=temp->next;
+                         temp->next->prev=ptr;
+                         free(temp);
+                         printf("\n node deleted\n");
                      }
                  }
                  
