@@ -1,7 +1,5 @@
 #include <stdio.h>
-
 #include<stdlib.h>
-
 struct node
 {
     struct node *prev;
@@ -10,21 +8,13 @@ struct node
 };
 struct node *head;
 void insert_front();
-
 void insert_last();
-
 void delete_front();
-
 void delete_last();
-
 void insert_nthpos();
-
 void delete_nthpos();
-
 void display();
-
 void search();
-
 void main()
 {
     int ch=0;
@@ -68,9 +58,8 @@ void main()
         }
     }
 }
-                 
+                 // function for inserting elements at beginning
                  void insert_front()
-
                  {
                      struct node *ptr;
                      int item;
@@ -104,9 +93,8 @@ void main()
                          
                  }
                  
-                 
+                 //function for inserting elements at last
                  void insert_last()
-
                  {
                      struct node *ptr, *temp;
                      int item;
@@ -141,7 +129,7 @@ void main()
                      printf("\nnode inserted");
                  }
                  
-                 
+                 //function for deleting elements at last
                  void delete_last()
                  {
                      struct node *ptr;
@@ -168,7 +156,7 @@ void main()
                      }
                  }
                  
-                 
+                 //function for deleting elements at beginning
                  void delete_front()
                  {
                      struct node *ptr;
@@ -192,7 +180,7 @@ void main()
                      }
                  }
                  
-                 
+                 //function for disply elements present in linked list
                  void display()
                  {
                      struct node *ptr;
@@ -204,7 +192,7 @@ void main()
                      }
                  }
                  
-                 
+                 //function for searching element in linked list
                  void search()
                  {
                      struct node *ptr;
@@ -239,8 +227,10 @@ void main()
                          }
                      }
                  }
-                 void insert_nthpos()
 
+                
+                 //function for inserting elements at nth position
+                 void insert_nthpos()
                  {
                      struct node *ptr,*temp;
                      int item, loc,i;
@@ -274,7 +264,7 @@ void main()
                      }
                  }
 
-
+                 //function for delete elements at nth position 
                  void delete_nthpos()
                  {
                      struct node *ptr, *temp;  
