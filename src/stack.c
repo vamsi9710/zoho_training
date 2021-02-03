@@ -1,15 +1,12 @@
 //function for pushing elements into stack
-void push()
+void push(int valu)
 {
-    int valu;
     if(top==MAX-1)
     {
         printf("\nstack is full\n");
     }
     else
     {
-        printf("\n stack element to push:");
-        scanf("%d",&valu);
         top=top+1;
         stack[top]=valu;
     }
