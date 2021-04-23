@@ -82,5 +82,3 @@ void display()
             printf("%d\n",stack[i]);
     }
 
-
-
